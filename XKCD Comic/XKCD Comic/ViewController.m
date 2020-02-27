@@ -69,11 +69,44 @@
         NSLog(@"comic: %@", comic.imageURL);
         // update UI
         
+        [self downloadImageURL:comic.imageURL];
         
     }] resume];
     
     
 }
+
+- (void)downloadImageURL:(NSURL *)imageURL {
+    
+    [[[NSURLSession sharedSession] dataTaskWithURL:imageURL completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"imageURL: %@", imageURL);
+        
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"Error no data!");
+            return;
+        }
+        
+        // parse data
+        UIImage *image = [UIImage imageWithData:data];
+        
+        if (!image) {
+            NSLog(@"Error no image with data: %@", data);
+            return;
+        }
+        
+        // update UI
+        dispatch_async(dispatch_get_main_queue(), ^{
+            NSLog(@"Downloaded image: %@", image);
+        });
+        
+    }] resume];
+}
+
 
 
 @end
