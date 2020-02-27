@@ -15,6 +15,9 @@
 // private property
 @property (nonatomic) LSIComic *comic;
 
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *imageView;
+
 @end
 
 @implementation ViewController
@@ -69,6 +72,10 @@
         NSLog(@"comic: %@", comic.imageURL);
         // update UI
         
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.titleLabel.text = comic.title;
+        });
+        
         [self downloadImageURL:comic.imageURL];
         
     }] resume];
@@ -102,6 +109,7 @@
         // update UI
         dispatch_async(dispatch_get_main_queue(), ^{
             NSLog(@"Downloaded image: %@", image);
+            self.imageView.image = image;
         });
         
     }] resume];
