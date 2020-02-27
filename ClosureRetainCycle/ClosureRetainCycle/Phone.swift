@@ -29,8 +29,11 @@ class Person {
     
     func setupPhone() {
         self.phone.whenPhoneRings { [weak self] in
+            guard let self = self else { return }  // Early exit if self isn't valid
+            
+            // Do you want to run the following lines of code? Or not?
             print("<Answering phone>")
-            print("Hello this is \(self?.name ?? "nil")") // self: 2
+            print("Hello this is \(self.name)") // self: 2
         }
     }
 }

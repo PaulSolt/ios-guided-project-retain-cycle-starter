@@ -14,9 +14,12 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let phone = Phone() // phone: 1
-        let person = Person(name: "John", phone: phone) // person: 1 + 1
+        var person: Person? = Person(name: "John", phone: phone) // person: 1 + 1
 
-        person.answerPhone()
+    //        person.answerPhone()
+        
+        person = nil        // if the person doesn't exist, should we still call them?
+        phone.call()
         
         // Question: Did the memory get cleaned up?
         
