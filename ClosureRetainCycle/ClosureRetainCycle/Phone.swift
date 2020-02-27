@@ -9,8 +9,8 @@
 import Foundation
 
 class Person {
-    let name: String
-    let phone: Phone
+    let name: String  // strong: name: 1
+    let phone: Phone  // strong: phone: 1
     
     init(name: String, phone: Phone) {
         self.name = name
@@ -28,16 +28,16 @@ class Person {
     }
     
     func setupPhone() {
-        self.phone.whenPhoneRings {
+        self.phone.whenPhoneRings { [weak self] in
             print("<Answering phone>")
-            print("Hello this is \(self.name)")
+            print("Hello this is \(self?.name ?? "nil")") // self: 2
         }
     }
 }
 
 class Phone {
     
-    private var phoneAnswerHandler: (() -> Void)?
+    private var phoneAnswerHandler: (() -> Void)?  // strong: 1
 
     deinit {
         print("deint: \(self)")
