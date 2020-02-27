@@ -14,6 +14,8 @@
 		BDAEC2862408436E00A25CCD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDAEC2852408436E00A25CCD /* Assets.xcassets */; };
 		BDAEC2892408436E00A25CCD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDAEC2872408436E00A25CCD /* LaunchScreen.storyboard */; };
 		BDAEC28C2408436E00A25CCD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAEC28B2408436E00A25CCD /* main.m */; };
+		BDAEC293240844A500A25CCD /* Comic.json in Resources */ = {isa = PBXBuildFile; fileRef = BDAEC292240844A500A25CCD /* Comic.json */; };
+		BDAEC296240844C400A25CCD /* LSIComic.m in Sources */ = {isa = PBXBuildFile; fileRef = BDAEC295240844C400A25CCD /* LSIComic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		BDAEC2882408436E00A25CCD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDAEC28A2408436E00A25CCD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BDAEC28B2408436E00A25CCD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BDAEC292240844A500A25CCD /* Comic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Comic.json; sourceTree = "<group>"; };
+		BDAEC294240844C400A25CCD /* LSIComic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIComic.h; sourceTree = "<group>"; };
+		BDAEC295240844C400A25CCD /* LSIComic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIComic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,9 @@
 				BDAEC27D2408436C00A25CCD /* SceneDelegate.m */,
 				BDAEC27F2408436C00A25CCD /* ViewController.h */,
 				BDAEC2802408436C00A25CCD /* ViewController.m */,
+				BDAEC294240844C400A25CCD /* LSIComic.h */,
+				BDAEC295240844C400A25CCD /* LSIComic.m */,
+				BDAEC292240844A500A25CCD /* Comic.json */,
 				BDAEC2822408436C00A25CCD /* Main.storyboard */,
 				BDAEC2852408436E00A25CCD /* Assets.xcassets */,
 				BDAEC2872408436E00A25CCD /* LaunchScreen.storyboard */,
@@ -134,6 +142,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDAEC2892408436E00A25CCD /* LaunchScreen.storyboard in Resources */,
+				BDAEC293240844A500A25CCD /* Comic.json in Resources */,
 				BDAEC2862408436E00A25CCD /* Assets.xcassets in Resources */,
 				BDAEC2842408436C00A25CCD /* Main.storyboard in Resources */,
 			);
@@ -147,6 +156,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDAEC2812408436C00A25CCD /* ViewController.m in Sources */,
+				BDAEC296240844C400A25CCD /* LSIComic.m in Sources */,
 				BDAEC27B2408436C00A25CCD /* AppDelegate.m in Sources */,
 				BDAEC28C2408436E00A25CCD /* main.m in Sources */,
 				BDAEC27E2408436C00A25CCD /* SceneDelegate.m in Sources */,

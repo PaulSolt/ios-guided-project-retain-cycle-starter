@@ -16,7 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+
+    //     Is there an interface for automated systems to access comics and metadata?
+    //    Yes. You can get comics through the JSON interface, at URLs like http://xkcd.com/info.0.json (current comic) and http://xkcd.com/614/info.0.json (comic #614).
+        //    https://.xkcd.com/comics/worst_thing_that_could_happen.png
+        // http://xkcd.com/info.0.json = 2261
+
+        NSURL *baseURL = [NSURL URLWithString:@"https://xkcd.com/"];
+
+
+
+
 }
 
 
