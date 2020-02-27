@@ -7,8 +7,13 @@
 //
 
 #import "ViewController.h"
+#import "LSIComic.h"
 
+// Class extension (anonymous category)
 @interface ViewController ()
+
+// private property
+@property (nonatomic) LSIComic *comic;
 
 @end
 
@@ -16,18 +21,58 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-
+    
+    
     //     Is there an interface for automated systems to access comics and metadata?
     //    Yes. You can get comics through the JSON interface, at URLs like http://xkcd.com/info.0.json (current comic) and http://xkcd.com/614/info.0.json (comic #614).
-        //    https://.xkcd.com/comics/worst_thing_that_could_happen.png
-        // http://xkcd.com/info.0.json = 2261
+    //    https://.xkcd.com/comics/worst_thing_that_could_happen.png
+    // http://xkcd.com/info.0.json = 2261
+    
+    NSURL *baseURL = [NSURL URLWithString:@"https://xkcd.com/"];
 
-        NSURL *baseURL = [NSURL URLWithString:@"https://xkcd.com/"];
+    NSString *endPoint = @"info.0.json";
+    int comicNumber = 2261; // 417 (portait)
 
+    BOOL mostRecent = NO;
 
+    NSURL *url = [baseURL URLByAppendingPathComponent:endPoint]; // http://xkcd.com/info.0.json
 
+    if (!mostRecent) { // http://xkcd.com/2261/info.0.json
+        NSString *comicNumberString = [NSString stringWithFormat:@"%i", comicNumber];
+        url = [[baseURL URLByAppendingPathComponent: comicNumberString] URLByAppendingPathComponent:endPoint];
+    }
 
+    
+    [[[NSURLSession sharedSession] dataTaskWithURL:url completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSLog(@"URL: %@", url);
+        
+        if (error) {
+            NSLog(@"Error: %@", error);
+            return;
+        }
+        
+        if (!data) {
+            NSLog(@"Error no data!");
+            return;
+        }
+        
+        // parse data
+        NSError *jsonError = nil;
+        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
+        if (jsonError) {
+            NSLog(@"Error parsing JSON data: %@", json);
+            return;
+        }
+        
+        LSIComic *comic = [[LSIComic alloc] initWithDictionary:json];
+        
+        NSLog(@"comic: %@", comic.imageURL);
+        // update UI
+        
+        
+    }] resume];
+    
+    
 }
 
 
