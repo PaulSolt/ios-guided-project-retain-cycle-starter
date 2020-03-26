@@ -10,11 +10,30 @@ import Foundation
 
 // Double Linked List Node
 
+// ----- Retain Cycle
 //          head                tail
 //   nil <- Bob  <->  Max  <->  Sue -> nil
+
+// Retain cycle (next/prev are strong references)
+//          head                        tail
+//   nil <- Bob (2)  <->  Max (2)  <->  Sue (2) -> nil
+
+// removeAll (set head/tail to nil) = BUG retain cycle!
+//   nil <- Bob (1)  <->  Max (2)  <->  Sue (1) -> nil
+
+//----- Fixing the Retain Cycle
+
+// Retain cycle (next is strong, prev a weak references)
+//          head                          tail
+//   nil <- Bob (+1)  <->  Max (+1)  <->  Sue (+1+1) -> nil
+
+
+//          head = nil                          tail
+//   nil <- Bob (0)  <->  Max (0)  <->  Sue (0+0) -> nil
+
 class Node: Equatable, CustomStringConvertible {
     var next: Node?
-    var prev: Node?
+    var prev: Node? // break a retain cycle using the weak reference
     var value: String
     
     init(value: String) {

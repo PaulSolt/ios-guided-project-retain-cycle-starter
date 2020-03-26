@@ -14,11 +14,14 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         let phone = Phone()
-        let person = Person(name: "John", phone: phone)
+        var person: Person? = Person(name: "John", phone: phone)
 
-        person.answerPhone()
+        person = nil // forcing the person object to get cleaned
         
+        person?.answerPhone()
+        
+        phone.call()
         // Question: Did the memory get cleaned up?
-    }
+    } // end of scope, all local variables should get cleaned up
 }
 

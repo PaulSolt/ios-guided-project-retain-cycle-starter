@@ -9,8 +9,8 @@
 import Foundation
 
 class Person {
-    let name: String
-    let phone: Phone
+    let name: String // strong
+    let phone: Phone // strong
     
     init(name: String, phone: Phone) {
         self.name = name
@@ -28,16 +28,27 @@ class Person {
     }
     
     func setupPhone() {
-        self.phone.whenPhoneRings {
+        // unowned = implicitly unwrapped optional (risky like force unwrapping)
+        self.phone.whenPhoneRings { [weak self] in // capture list
+            
+            // Guard allows us to focus on the algorithm below without
+            // having to worry about optional values
+            guard let self = self else {
+                print("Person doesn't exist")
+                return
+            }
+            // How can I prevent logic from executing here if self is nil
+            
             print("<Answering phone>")
-            print("Hello this is \(self.name)")
+            print("Hello this is \(self.name)") // capture self strongly
         }
     }
 }
 
 class Phone {
     
-    private var phoneAnswerHandler: (() -> Void)?
+    // Closure that has a strong reference
+    private var phoneAnswerHandler: (() -> Void)? // strong
 
     deinit {
         print("deint: \(self)")

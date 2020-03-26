@@ -12,10 +12,12 @@ class LinkedListTests: XCTestCase {
 
     func testRemoveAllClearsMemory() {
         let list = LinkedList()
+        // var is going to be a strong reference by default
         var n1: Node? = Node(value: "One")
         var n2: Node? = Node(value: "Two")
         var n3: Node? = Node(value: "Three")
         
+        // weak references are not owning, and they will auto-nil
         weak var weakN1 = n1
         weak var weakN2 = n2
         weak var weakN3 = n3
@@ -37,7 +39,7 @@ class LinkedListTests: XCTestCase {
         XCTAssertNil(weakN1)
         XCTAssertNil(weakN2)
         XCTAssertNil(weakN3)
-        
+
         XCTAssertNil(list.head)
         XCTAssertNil(list.tail)
     }
