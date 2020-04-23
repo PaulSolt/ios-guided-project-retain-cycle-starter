@@ -10,4 +10,15 @@
 
 @implementation LSIComic
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
+    self = [super init];
+    if (self) {
+        _title = dictionary[@"title"];
+        NSString *imageURLString = dictionary[@"img"];
+        _imageURL = [NSURL URLWithString:imageURLString];
+        _alt = dictionary[@"alt"];
+    }
+    return self;
+}
+
 @end
