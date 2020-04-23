@@ -73,8 +73,18 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             self.titleLabel.text = comic.title;
         });
+        
+        // It is possible to load image data with dataWithContents of URL, just be careful that this is
+        // either done to sanity check an API, or for super quick and dirty MVP
+        // It will block UI updates if done on the main thread
+        
+//        NSData *imageData = [NSData dataWithContentsOfURL:comic.imageURL]; // sync call (we have to wait until it finishes
+        
+//        dispatch_async(dispatch_get_main_queue(), ^{
+//            self.imageView.image = // image
+//        });
 
-        [self downloadImage:comic.imageURL];
+        [self downloadImage:comic.imageURL]; //async
         
     }] resume];
     
