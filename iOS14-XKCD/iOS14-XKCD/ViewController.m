@@ -16,7 +16,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    
+    // Comic object
+    
+    // URLSession dataTask
+    
+    // 1. download comic json
+    
+    // 2. download image
+    
+    
+    
 }
 
 
