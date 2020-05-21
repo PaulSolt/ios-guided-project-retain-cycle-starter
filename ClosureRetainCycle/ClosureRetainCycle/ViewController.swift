@@ -13,8 +13,11 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let phone = Phone()
-        let person = Person(name: "John", phone: phone)
+        // local variables should go out of scope (ARC) after the closing
+        // } at the end of viewDidLoad()
+        
+        let phone = Phone() // phone: 1,
+        let person = Person(name: "John", phone: phone) // person: 2, closure: 1
 
         person.answerPhone()
         

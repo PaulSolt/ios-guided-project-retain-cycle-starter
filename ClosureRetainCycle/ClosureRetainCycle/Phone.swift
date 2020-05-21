@@ -28,9 +28,9 @@ class Person {
     }
     
     func setupPhone() {
-        self.phone.whenPhoneRings {
+        self.phone.whenPhoneRings { [weak self] in
             print("<Answering phone>")
-            print("Hello this is \(self.name)")
+            print("Hello this is \(self?.name)")
         }
     }
 }
