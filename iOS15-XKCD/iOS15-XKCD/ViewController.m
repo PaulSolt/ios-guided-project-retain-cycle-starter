@@ -85,16 +85,17 @@
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
-//    NSLog(@"pan:");
+    // Get the change in translation (delta)
     CGPoint translation = [panGesture locationInView:panGesture.view];
     [panGesture setTranslation:CGPointZero inView:panGesture.view];
     
+    // Always check the state (began and ended will be called once for any setup/teardown logic)
     if (panGesture.state == UIGestureRecognizerStateChanged) {
         NSLog(@"Pan: %@", NSStringFromCGPoint(translation));
-//        self.imageView.bounds = CGRectMake(0, translation.y, 400, 100);
         CGPoint center = panGesture.view.center;
-        [panGesture.view setCenter:CGPointMake(center.x + translation.x - panGesture.view.bounds.size.width / 2,
-                                               center.y + translation.y - panGesture.view.bounds.size.height / 2)];
+        CGSize size = panGesture.view.bounds.size;
+        [panGesture.view setCenter:CGPointMake(center.x + translation.x - size.width / 2,
+                                               center.y + translation.y - size.height / 2)];
     }
 }
 
