@@ -10,11 +10,38 @@ import Foundation
 
 // Double Linked List Node
 
-//          head                tail
-//   nil <- Bob  <->  Max  <->  Sue -> nil
+// Retain Cycle Example
+//          head                                    tail
+//   nil <- Bob (1+1 = 2)  <->  Max (1+1 = 2)  <->  Sue (1+1 = 2) -> nil
+
+//          head                        tail
+//   nil <- Bob (2)  <->  Max (2)  <->  Sue (2) -> nil
+
+// removeAll()
+// head = nil
+// tail = nil
+
+//          head = nil                  tail = nil
+
+// floating in "space" - memory leak!!!
+//   nil <- Bob (1)  <->  Max (2)  <->  Sue (1) -> nil
+
+
+// Weak - Example (next is strong, prev is weak)
+//          head                        tail
+//   nil <- Bob (1)  <->  Max (1)  <->  Sue (2) -> nil
+
+
+// removeAll()
+// head = nil
+// tail = nil
+
+//          head = nil                              tail = nil
+//   nil <- Bob (1-1 = 0)  <->  Max (1-1 = 0)  <->  Sue (2-1-1 = 0) -> nil
+
 class Node: Equatable, CustomStringConvertible {
     var next: Node?
-    var prev: Node?
+    weak var prev: Node?
     var value: String
     
     init(value: String) {
