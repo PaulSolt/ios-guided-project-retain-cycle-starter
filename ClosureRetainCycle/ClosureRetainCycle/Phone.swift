@@ -29,8 +29,11 @@ class Person {
     
     func setupPhone() {
         self.phone.whenPhoneRings { [weak self] in
+            // We might not want to execute any of the code if self no longers exists
+            guard let self = self else { return } // Early exit if self (Person or ViewController no longer exists)
+            
             print("<Answering phone>")
-            print("Hello this is \(self?.name)")
+            print("Hello this is \(self.name)")
         }
     }
 }
