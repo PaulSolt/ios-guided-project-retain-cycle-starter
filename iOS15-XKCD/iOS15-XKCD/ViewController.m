@@ -75,6 +75,27 @@
         [self downloadImageWithURL: comic.imageURL];
     }];
     [task resume];
+    
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    redView.userInteractionEnabled = YES;
+    redView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:redView];
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
+    [redView addGestureRecognizer:panGesture];
+}
+
+- (void)handlePan:(UIPanGestureRecognizer *)panGesture {
+//    NSLog(@"pan:");
+    CGPoint translation = [panGesture locationInView:panGesture.view];
+    [panGesture setTranslation:CGPointZero inView:panGesture.view];
+    
+    if (panGesture.state == UIGestureRecognizerStateChanged) {
+        NSLog(@"Pan: %@", NSStringFromCGPoint(translation));
+//        self.imageView.bounds = CGRectMake(0, translation.y, 400, 100);
+        CGPoint center = panGesture.view.center;
+        [panGesture.view setCenter:CGPointMake(center.x + translation.x - panGesture.view.bounds.size.width / 2,
+                                               center.y + translation.y - panGesture.view.bounds.size.height / 2)];
+    }
 }
 
 - (void)updateViews {
