@@ -14,6 +14,8 @@
 		BD4CC2882476F1F200EBC0BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BD4CC2872476F1F200EBC0BA /* Assets.xcassets */; };
 		BD4CC28B2476F1F200EBC0BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD4CC2892476F1F200EBC0BA /* LaunchScreen.storyboard */; };
 		BD4CC28E2476F1F200EBC0BA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4CC28D2476F1F200EBC0BA /* main.m */; };
+		BD4CC2952476F34100EBC0BA /* Comic.json in Resources */ = {isa = PBXBuildFile; fileRef = BD4CC2942476F34100EBC0BA /* Comic.json */; };
+		BD4CC2982476F37C00EBC0BA /* LSIComic.m in Sources */ = {isa = PBXBuildFile; fileRef = BD4CC2972476F37C00EBC0BA /* LSIComic.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +31,9 @@
 		BD4CC28A2476F1F200EBC0BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BD4CC28C2476F1F200EBC0BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BD4CC28D2476F1F200EBC0BA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BD4CC2942476F34100EBC0BA /* Comic.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Comic.json; sourceTree = "<group>"; };
+		BD4CC2962476F37C00EBC0BA /* LSIComic.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LSIComic.h; sourceTree = "<group>"; };
+		BD4CC2972476F37C00EBC0BA /* LSIComic.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LSIComic.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,6 +72,9 @@
 				BD4CC27F2476F1EF00EBC0BA /* SceneDelegate.m */,
 				BD4CC2812476F1EF00EBC0BA /* ViewController.h */,
 				BD4CC2822476F1EF00EBC0BA /* ViewController.m */,
+				BD4CC2942476F34100EBC0BA /* Comic.json */,
+				BD4CC2962476F37C00EBC0BA /* LSIComic.h */,
+				BD4CC2972476F37C00EBC0BA /* LSIComic.m */,
 				BD4CC2842476F1EF00EBC0BA /* Main.storyboard */,
 				BD4CC2872476F1F200EBC0BA /* Assets.xcassets */,
 				BD4CC2892476F1F200EBC0BA /* LaunchScreen.storyboard */,
@@ -102,6 +110,7 @@
 		BD4CC2702476F1EF00EBC0BA /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				CLASSPREFIX = LSI;
 				LastUpgradeCheck = 1140;
 				ORGANIZATIONNAME = "Lambda, Inc";
 				TargetAttributes = {
@@ -134,6 +143,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4CC28B2476F1F200EBC0BA /* LaunchScreen.storyboard in Resources */,
+				BD4CC2952476F34100EBC0BA /* Comic.json in Resources */,
 				BD4CC2882476F1F200EBC0BA /* Assets.xcassets in Resources */,
 				BD4CC2862476F1EF00EBC0BA /* Main.storyboard in Resources */,
 			);
@@ -147,6 +157,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BD4CC2832476F1EF00EBC0BA /* ViewController.m in Sources */,
+				BD4CC2982476F37C00EBC0BA /* LSIComic.m in Sources */,
 				BD4CC27D2476F1EF00EBC0BA /* AppDelegate.m in Sources */,
 				BD4CC28E2476F1F200EBC0BA /* main.m in Sources */,
 				BD4CC2802476F1EF00EBC0BA /* SceneDelegate.m in Sources */,
