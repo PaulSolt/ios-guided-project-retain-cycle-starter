@@ -90,13 +90,6 @@
             NSLog(@"Error downloading image: %@", error);
         }
         
-        NSError *jsonError = nil;
-        NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonError];
-        
-        if (jsonError) {
-            NSLog(@"JSON error: %@", error);
-        }
-        
         UIImage *image = [UIImage imageWithData:data]; // TODO: check it's valid
         
         // update the UI
