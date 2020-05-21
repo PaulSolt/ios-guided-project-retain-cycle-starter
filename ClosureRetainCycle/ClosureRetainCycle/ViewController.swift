@@ -17,10 +17,15 @@ class ViewController: UIViewController {
         // } at the end of viewDidLoad()
         
         let phone = Phone() // phone: 1,
-        let person = Person(name: "John", phone: phone) // person: 2, closure: 1
+        var person: Person? = Person(name: "John", phone: phone) // person: 2, closure: 1
 
-        person.answerPhone()
+        person?.answerPhone()
+        person = nil
+        phone.call()
         
+        UIView.animate(withDuration: 2.0) { // closure gets cleaned up after 2 seconds
+            self.view.backgroundColor = .systemBlue
+        }
         // Question: Did the memory get cleaned up?
     }
 }
