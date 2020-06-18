@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let phone = Phone()
-        let person = Person(name: "John", phone: phone)
+        let phone = Phone() // phone: 1
+        var person: Person? = Person(name: "John", phone: phone) // person: 1
 
-        person.answerPhone()
+        person?.answerPhone()
+        person = nil
+        
+        phone.call()
         
         // Question: Did the memory get cleaned up?
     }
