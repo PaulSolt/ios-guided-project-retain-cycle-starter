@@ -10,6 +10,9 @@ import XCTest
 
 class LinkedListTests: XCTestCase {
 
+    // TODO: Make this unit test pass. Fix the retain cycle and give me a check-mark if you figure
+    // it out
+    
     func testRemoveAllClearsMemory() {
         let list = LinkedList()
         var n1: Node? = Node(value: "One")

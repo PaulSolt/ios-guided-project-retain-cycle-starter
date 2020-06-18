@@ -13,8 +13,8 @@ import Foundation
 //          head                tail
 //   nil <- Bob  <->  Max  <->  Sue -> nil
 class Node: Equatable, CustomStringConvertible {
-    var next: Node?
-    var prev: Node?
+    var next: Node? // strong by default
+    weak var prev: Node?
     var value: String
     
     init(value: String) {
