@@ -29,15 +29,14 @@
     
     // Network call
     
-    //    1. Download JSON
+    // 1. Download JSON
     // 2. Download image
 
-    NSURL *baseURL = [NSURL URLWithString:@"https://xkcd.com/"];
-    
-    NSString *endPoint = @"info.0.json";
-    int comicNumber = 2261; // 417 (portait)
-    
     BOOL mostRecent = NO;
+    int comicNumber = 2261; // 417 (portait)
+
+    NSURL *baseURL = [NSURL URLWithString:@"https://xkcd.com/"];
+    NSString *endPoint = @"info.0.json";
     
     NSURL *url = [baseURL URLByAppendingPathComponent:endPoint]; // http://xkcd.com/info.0.json
     
@@ -59,6 +58,7 @@
         
         if (jsonError) {
             NSLog(@"JSON error: %@", error);
+            return;
         }
         
         LSIComic *comic = [[LSIComic alloc] initWithDictionary:json];
@@ -71,17 +71,18 @@
 //            [self updateViews];
             self.titleLabel.text = comic.title;
         });
+        
         // make 2nd request
         [self downloadImageWithURL: comic.imageURL];
     }];
     [task resume];
     
-    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-    redView.userInteractionEnabled = YES;
-    redView.backgroundColor = [UIColor redColor];
-    [self.view addSubview:redView];
-    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
-    [redView addGestureRecognizer:panGesture];
+//    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+//    redView.userInteractionEnabled = YES;
+//    redView.backgroundColor = [UIColor redColor];
+//    [self.view addSubview:redView];
+//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
+//    [redView addGestureRecognizer:panGesture];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
@@ -110,6 +111,7 @@
         
         if (error) { // error != nil // is the error non-zero
             NSLog(@"Error downloading image: %@", error);
+            return;
         }
         
         UIImage *image = [UIImage imageWithData:data]; // TODO: check it's valid

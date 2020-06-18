@@ -12,9 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface LSIComic : NSObject
 
-@property NSString *title;
-@property NSString *alt;
-@property NSURL *imageURL;
+@property (nonatomic, copy) NSString *title;
+@property (nonatomic, copy) NSString *alt;
+@property (nonatomic) NSURL *imageURL;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 
