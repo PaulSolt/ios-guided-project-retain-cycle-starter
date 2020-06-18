@@ -13,7 +13,7 @@ let text = String(repeating: "Test", count: 10_000_000) // 10 million repeats = 
 
 var list = LinkedList()
 
-for i in 0 ..< 25 {
+for i in 0 ..< 25000 {
     // make each string unique by appending a number
     let node = Node(value: "\(i)" + text)
     list.insertFirst(node)

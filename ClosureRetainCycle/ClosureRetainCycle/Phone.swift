@@ -30,11 +30,14 @@ class Person {
     func setupPhone() {
         //self.phone.whenPhoneRings(answer: <#T##(() -> Void)##(() -> Void)##() -> Void#>)
         // Use capture list to break retain cycle: []
+        // Rule: Never use unowned, always default to [weak self]
         self.phone.whenPhoneRings { [weak self] in
-//            guard let self = self else { return }
+            guard let self = self else {
+                return
+            }
             
             print("<Answering phone>")
-            print("Hello this is \(self?.name)") // person: 2
+            print("Hello this is \(self.name)") // person: 2
         }
     }
 }
