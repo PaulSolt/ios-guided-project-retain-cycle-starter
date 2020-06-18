@@ -77,12 +77,13 @@
     }];
     [task resume];
     
-//    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-//    redView.userInteractionEnabled = YES;
-//    redView.backgroundColor = [UIColor redColor];
-//    [self.view addSubview:redView];
-//    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
-//    [redView addGestureRecognizer:panGesture];
+    UIView *redView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+    redView.userInteractionEnabled = YES;
+    redView.backgroundColor = [UIColor systemBlueColor];
+    [self.view addSubview:redView];
+    
+    UIPanGestureRecognizer *panGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:NSSelectorFromString(@"handlePan:")];
+    [redView addGestureRecognizer:panGesture];
 }
 
 - (void)handlePan:(UIPanGestureRecognizer *)panGesture {
